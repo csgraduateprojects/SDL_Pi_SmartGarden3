@@ -1,7 +1,7 @@
 # test for Weather Sensors
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------
-#The vineyard of the software. 
+#The vineyard version of the software. 
 import sys
 from subprocess import PIPE, Popen, STDOUT, run
 from threading  import Thread
