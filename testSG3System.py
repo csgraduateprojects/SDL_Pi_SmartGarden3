@@ -6,7 +6,7 @@
 
 # set SGSEXT_IP to the IP address of your connected Wireless Extender to be tested
 # Example:  SGSEXT_IP = "192.168.1.52"
-SGSEXT_IP = ""
+SGSEXT_IP = "192.168.50.179"
 
 import sys, traceback
 import os
@@ -53,6 +53,8 @@ def get_ip_address():
 
 def setMQTT_IP():
         myMQTTIP = get_ip_address()
+        #Another change here!
+        #myMQTTIP = '192.168.50.10'
         myMQTTPort  = 1883
         myURL = 'checkForID?params='+myMQTTIP+','+str(myMQTTPort)
         myJSON = sendCommandToWireless(SGSEXT_IP, myURL)

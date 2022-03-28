@@ -14,11 +14,11 @@ import scanForResources
 
 import readJSON
 
-def on_WirelessMQTTClientconnect(client, userdata, flags, rc):
+def on_WirelessMQTTClientconnect(client, userdata, flags, rc, properties=None):
 
     if rc == 0:
 
-        #print("WirelessMQTTClient Connected to broker")
+        print("WirelessMQTTClient Connected to broker")
 
         state.WirelessMQTTClientConnected = True                #Signal connection
 
@@ -170,17 +170,20 @@ def on_WirelessMQTTClientlog(client, userdata, level, buf):
 
 def startWirelessMQTTClient(ClientName):
 
-
     broker_address= "127.0.0.1"  #Broker address
     port = 1883                         #Broker port
 
     state.WirelessMQTTClient = mqttClient.Client(ClientName)               #create new instance
+    
+    #state.WirelessMQTTClient = mqttClient.Client(ClientName)
+    
+
     #client.username_pw_set(user, password=password)    #set username and password
     state.WirelessMQTTClient.on_connect= on_WirelessMQTTClientconnect                      #attach function to callback
     state.WirelessMQTTClient.on_message= on_WirelessMQTTClientmessage                      #attach function to callback
     state.WirelessMQTTClient.on_log = on_WirelessMQTTClientlog
     
-    state.WirelessMQTTClient.connect(broker_address, port=port)          #connect to broker
+    state.WirelessMQTTClient.connect(broker_address, port)          #connect to broker
     
     state.WirelessMQTTClient.loop_start()        #start the loop
 
@@ -204,4 +207,3 @@ def sendMQTTValve(myID, Valve, State, TimeOn):
     myMessageJSON = json.dumps(myMessage)
     #print(myMessageJSON)
     state.WirelessMQTTClient.publish("SGS/"+str(myID)+"/Valves",myMessageJSON )
-

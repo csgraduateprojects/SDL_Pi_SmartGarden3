@@ -990,7 +990,7 @@ class SGSConfigure(App):
                 mySplit = selected_item_key.split("/")
                 myWirelessAddress = mySplit[0]
 
-            self.CurrentBTAddress = myPickAddreess
+            self.CurrentBTAddress = myPickaddress
 
             # open the sql file and update
         
@@ -2656,8 +2656,9 @@ class SGSConfigure(App):
        
         IPAddr = IPAddr.decode()
         IPAddr = IPAddr.split(" ")
-        print("Your Computer IP Address is:" + IPAddr[0])  
-        myNetIP = IPAddr[0].split(".")
+        #Changed this line and previous to 1
+        print("Your Computer IP Address is:" + IPAddr[1])  
+        myNetIP = IPAddr[1].split(".")
         myNetIP = myNetIP[0]+"."+myNetIP[1]+"."+myNetIP[2]+".0"
         CIDR = ipaddress.IPv4Network(myNetIP+"/24")
         print("Your Computer CIDR is:", CIDR)

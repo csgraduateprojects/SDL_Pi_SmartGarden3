@@ -390,7 +390,6 @@ def initializeScheduler():
         # sensor manual water
         state.scheduler.add_job(Valves.manualCheck, 'interval', seconds=15)
     
-    
     	
     	
     	
