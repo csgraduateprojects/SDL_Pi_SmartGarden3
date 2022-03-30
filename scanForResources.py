@@ -71,8 +71,9 @@ def findWirelessExtenders():
        
     IPAddr = IPAddr.decode()
     IPAddr = IPAddr.split(" ")
-    print("Your Computer IP Address is:" + IPAddr[0])  
-    myNetIP = IPAddr[0].split(".")
+    #Changed 0 to 1 in this line and the next
+    print("Your Computer IP Address is:" + IPAddr[1])  
+    myNetIP = IPAddr[1].split(".")
     myNetIP = myNetIP[0]+"."+myNetIP[1]+"."+myNetIP[2]+".0"
     CIDR = ipaddress.IPv4Network(myNetIP+"/24")
     print("Your Computer CIDR is:", CIDR)
@@ -117,8 +118,8 @@ def fixWirelessExtenders():
        
     IPAddr = IPAddr.decode()
     IPAddr = IPAddr.split(" ")
-    print("Your Computer IP Address is:" + IPAddr[0])  
-    myNetIP = IPAddr[0].split(".")
+    print("Your Computer IP Address is:" + IPAddr[1])  
+    myNetIP = IPAddr[1].split(".")
     myNetIP = myNetIP[0]+"."+myNetIP[1]+"."+myNetIP[2]+".0"
     CIDR = ipaddress.IPv4Network(myNetIP+"/24")
     print("Your Computer CIDR is:", CIDR)
@@ -197,6 +198,8 @@ def get_ip_address():
 
 def checkForDeviceFromIP(ip):
         myMQTTIP = get_ip_address()
+        #Another change here!
+        #myMQTTIP = '192.168.50.10'
         myMQTTPort  = 1883
         myURL = 'http://'+str(ip)+'/checkForID?params='+myMQTTIP+','+str(myMQTTPort)
         
